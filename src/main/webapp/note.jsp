@@ -1,16 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Michas
-  Date: 17.07.2022
-  Time: 15:34
-  To change this template use File | Settings | File Templates.
---%>
+<jsp:useBean id="note" scope="request" type="com.example.jointnotes.Note"/>
+<%@ page import="com.example.jointnotes.Note" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+    <head>
+        <title>Twoja notatka</title>
+    </head>
+    <body>
+        <h2>Twoja notatka od id ${note.id}</h2>
+        <p>${note ne null ? note.content : "Brak notatki o takim ID"}</p>
+    </body>
 </html>
