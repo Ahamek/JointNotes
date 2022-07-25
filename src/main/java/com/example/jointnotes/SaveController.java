@@ -8,6 +8,10 @@ import java.io.IOException;
 
 @WebServlet(name = "SaveController", value = "/save")
 public class SaveController extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -15,7 +19,7 @@ public class SaveController extends HttpServlet {
         saveNote(note, request);
         String noteUrl = NoteUtils.buildNoteUrl(note);
         request.setAttribute("noteUrl", noteUrl);
-        request.getRequestDispatcher("/confirmation.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/confirmation.jsp").forward(request, response);
     }
 
     private void saveNote(Note note, HttpServletRequest request) {
