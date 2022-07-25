@@ -1,5 +1,6 @@
 <%@ page import="java.util.UUID" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!doctype html>
 <html lang="en">
@@ -29,5 +30,13 @@
             </fieldset>
             <input type="submit" value="Zapisz"/>
         </form>
+
+        <c:if test="${sessionScope.urls ne null}">
+            <ul>
+                <c:forEach items="${urls.entrySet()}" var="url">
+                    <li><a href="${url.getValue()}">Notatka o id ${url.getKey()}</a></li>
+                </c:forEach>
+            </ul>
+        </c:if>
     </body>
 </html>

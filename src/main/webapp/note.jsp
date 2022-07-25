@@ -8,5 +8,6 @@
     <body>
         <h2>Twoja notatka od id ${note.id}</h2>
         <p>${note ne null ? note.content : "Brak notatki o takim ID"}</p>
+        <p><a href="${pageContext.request.contextPath}/index.jsp" target="_self">Utwórz nową notatkę</a></p>
     </body>
 </html>

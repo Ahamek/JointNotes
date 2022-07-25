@@ -5,9 +5,16 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "SaveController", value = "/save")
 public class SaveController extends HttpServlet {
+
+    Map<String, String> urls = new HashMap<>();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/index.jsp").forward(request, response);
@@ -17,9 +24,16 @@ public class SaveController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Note note = createNote(request);
         saveNote(note, request);
-        String noteUrl = NoteUtils.buildNoteUrl(note);
+        String noteUrl = getNoteUrl(note);
+        request.getSession().setAttribute("urls", urls);
         request.setAttribute("noteUrl", noteUrl);
         request.getRequestDispatcher("/WEB-INF/confirmation.jsp").forward(request, response);
+    }
+
+    private String getNoteUrl(Note note) {
+        String noteUrl = NoteUtils.buildNoteUrl(note);
+        urls.put(note.getId(), noteUrl);
+        return noteUrl;
     }
 
     private void saveNote(Note note, HttpServletRequest request) {

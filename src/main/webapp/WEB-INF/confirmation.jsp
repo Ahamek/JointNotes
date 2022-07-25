@@ -6,7 +6,5 @@
     <body>
         <h2>Notatka została zapisana</h2>
         <a href="${requestScope["noteUrl"]}">Przejdź do notatki</a>
-
-<%--        <%=request.getAttribute("noteUrl")%>--%>
     </body>
 </html>
