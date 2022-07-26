@@ -31,9 +31,19 @@
             <input type="submit" value="Zapisz"/>
         </form>
 
-        <c:if test="${sessionScope.urls ne null}">
+        <c:if test="${not pvurls.isEmpty() and pvurls ne null}">
+            <h3>Dostępne notatki prywatne</h3>
             <ul>
-                <c:forEach items="${urls.entrySet()}" var="url">
+                <c:forEach items="${pvurls.entrySet()}" var="url">
+                    <li><a href="${url.getValue()}">Notatka o id ${url.getKey()}</a></li>
+                </c:forEach>
+            </ul>
+        </c:if>
+
+        <c:if test="${not pburls.isEmpty() and pburls ne null}">
+            <h3>Dostępne notatki publiczne</h3>
+            <ul>
+                <c:forEach items="${pburls.entrySet()}" var="url">
                     <li><a href="${url.getValue()}">Notatka o id ${url.getKey()}</a></li>
                 </c:forEach>
             </ul>
