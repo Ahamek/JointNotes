@@ -11,8 +11,14 @@ import java.util.Map;
 @WebServlet(name = "SaveController", value = "/save")
 public class SaveController extends HttpServlet {
 
-    Map<String, String> privateLinks = new HashMap<>();
-    Map<String, String> publicLinks = new HashMap<>();
+    Map<String, String> privateLinks;
+    Map<String, String> publicLinks;
+
+    @Override
+    public void init() {
+        privateLinks = new HashMap<>();
+        publicLinks = new HashMap<>();
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

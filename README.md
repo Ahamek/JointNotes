@@ -17,4 +17,4 @@ Software requirements are as follows:
 How to run the program
 -----
 **Using Intellij IDEA**: I have included necessary files, just pull the repo
-and open with IDEA.
+and open with IDEA. Run the program using green arrow. :)
